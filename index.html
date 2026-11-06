@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BitChord Addon Archives</title>
+<meta name="description" content="Kumpulan link addon BitChord siap copy-paste.">
+<link rel="icon" href="logo-mark.svg" type="image/svg+xml">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#120a0a;--fg:#f5eeee;--red:#e5262b;--muted:#b7a5a5;--glass:rgba(255,255,255,.06);--border:rgba(255,255,255,.12);--glow:rgba(229,38,43,.45)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"Space Grotesk",sans-serif;color:var(--fg);min-height:100vh;display:flex;flex-direction:column;
+background:radial-gradient(40rem 30rem at 15% 10%,var(--glow),transparent 60%),radial-gradient(35rem 30rem at 90% 80%,rgba(160,20,25,.4),transparent 60%),var(--bg);background-attachment:fixed}
+.glass{background:var(--glass);backdrop-filter:blur(20px) saturate(140%);border:1px solid var(--border)}
+header{text-align:center;padding:80px 24px 48px;display:flex;flex-direction:column;align-items:center}
+.logo{border-radius:24px;padding:20px}.logo img{width:64px;height:64px;display:block}
+h1{margin-top:24px;font-size:clamp(2rem,6vw,3.75rem);letter-spacing:-.02em}h1 span{color:var(--red)}
+header p{margin-top:12px;color:var(--muted)}
+main{flex:1;width:100%;max-width:1024px;margin:0 auto;padding:0 24px 64px;display:grid;gap:16px;grid-template-columns:repeat(auto-fill,minmax(320px,1fr))}
+.card{border-radius:16px;padding:20px;transition:border-color .2s}.card:hover{border-color:rgba(229,38,43,.6)}
+.row{display:flex;gap:8px;margin-top:12px;align-items:center}
+code{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;background:rgba(0,0,0,.4);border-radius:8px;padding:8px 12px;font:12px "JetBrains Mono",monospace;color:var(--muted)}
+button{background:var(--red);color:#fff;border:0;border-radius:8px;padding:8px 16px;font:500 14px "Space Grotesk",sans-serif;cursor:pointer;box-shadow:0 0 20px var(--glow)}button:hover{filter:brightness(1.1)}
+footer{padding:20px;text-align:center;font-size:14px;color:var(--muted);border-width:1px 0 0}
+footer a{color:var(--red);font-weight:500;text-decoration:none}footer a:hover{text-decoration:underline}
+</style>
+</head>
+<body>
+<header>
+  <div class="logo glass"><img src="logo-mark.svg" alt="BitChord logo"></div>
+  <h1>BITCHORD <span>ADDON</span> ARCHIVES</h1>
+  <p>Klik copy, lalu tempel link addon di BitChord.</p>
+  <p>Buka 'BitChord' > Klik Akunmu (Pojok Kanan Atas) > Klik 'Settings' > Klik 'Source' > Pilih 'Add an Addon', Paste dan Save deh...  Ya Allaaah masa diajarin :')</p>
+</header>
+<main id="list"></main>
+<footer class="glass">With Love dan Kemarahan - <a href="https://8xploit.github.io/nemo" target="_blank" rel="noreferrer">Kapten Nemo</a></footer>
+<script>
+const addons=[
+["PencariMovie Music (Manifest)","https://stream.pencarimovie.com/66ff097863dedb7ccd8401d5ffe616f3/music/manifest.json"],
+["PencariMusic","https://stream.pencarimovie.com/66ff097863dedb7ccd8401d5ffe616f3/music"],
+["Qobuz Heisenbergg","https://soundfean-musics.onrender.com/a"],
+["Monochrome","https://bitchord-monochrome-addon.onrender.com"],
+["Eljohnzc Mono","https://eljohnzc-mono.de.deplexo.com"],
+["BitChord K","https://bit-chord-addon.vercel.app"],
+["BitChord K-DL","https://bit-chord-addon.vercel.app/a"],
+["BitChord K-Lastbabe","https://bit-chord-addon.vercel.app/b"],
+["BitChord K-Monochrome","https://bit-chord-addon.vercel.app/c"],
+["BitChord K-Deezer","https://bit-chord-addon.vercel.app/d"],
+["BitChord K-Instable","https://bit-chord-addon.vercel.app/e"],
+["BitChord K-Archive","https://bit-chord-addon.vercel.app/f"]];
+const list=document.getElementById("list");
+addons.forEach(([name,url])=>{
+  const c=document.createElement("div");c.className="card glass";
+  c.innerHTML=`<h3></h3><div class="row"><code></code><button>Copy</button></div>`;
+  c.querySelector("h3").textContent=name;c.querySelector("code").textContent=url;
+  const b=c.querySelector("button");
+  b.onclick=async()=>{
+    try{await navigator.clipboard.writeText(url)}catch{const t=document.createElement("textarea");t.value=url;document.body.appendChild(t);t.select();document.execCommand("copy");t.remove()}
+    b.textContent="Copied!";setTimeout(()=>b.textContent="Copy",1500)};
+  list.appendChild(c)});
+</script>
+</body>
+</html>
